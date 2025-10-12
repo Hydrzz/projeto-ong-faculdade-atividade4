@@ -1,0 +1,419 @@
+/* ============================================= */
+/* ===== 1. DESIGN SYSTEM (NOSSA FUNDAÇÃO) ===== */
+/* ============================================= */
+
+:root {
+    /* PALETA DE CORES */
+    --cor-primaria: #2A7D2E;      /* Verde escuro para destaque */
+    --cor-secundaria: #FFC107;   /* Amarelo para botões e detalhes */
+    --cor-fundo: #FDF8E1;        /* Um creme bem claro para o fundo */
+    --cor-texto: #333333;        /* Cinza escuro para textos */
+    --cor-neutra-clara: #FFFFFF; /* Branco */
+    --cor-neutra-media: #E0E0E0; /* Cinza claro para bordas */
+    --cor-sucesso: #4CAF50;      /* Verde para mensagens de sucesso */
+    --cor-erro: #F44336;         /* Vermelho para mensagens de erro */
+
+    /* TIPOGRAFIA */
+    --fonte-principal: 'Arial', sans-serif;
+    --tamanho-xxg: 3.0rem;  /* 48px */
+    --tamanho-xg: 2.0rem;   /* 32px */
+    --tamanho-g: 1.5rem;    /* 24px */
+    --tamanho-m: 1.125rem;  /* 18px */
+    --tamanho-p: 1.0rem;    /* 16px */
+
+    /* ESPAÇAMENTOS */
+    --espaco-p: 8px;
+    --espaco-m: 16px;
+    --espaco-g: 24px;
+    --espaco-xg: 32px;
+    --espaco-xxg: 48px;
+    --espaco-max: 64px;
+}
+
+/* ============================================= */
+/* ===== 2. RESET E ESTILOS GLOBAIS        ===== */
+/* ============================================= */
+
+/* Um "reset" simples para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6; /* Melhora a legibilidade */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    /* Usamos a cor primária para títulos */
+    color: var(--cor-primaria);
+}
+
+a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+}
+
+/* ============================================= */
+/* ===== 3. ESTRUTURA PRINCIPAL (GRID LAYOUT) ==== */
+/* ============================================= */
+
+body {
+    /* Mínimo de altura da tela inteira */
+    min-height: 100vh; 
+    
+    /* Ativamos o display grid */
+    display: grid; 
+    /* Definimos 3 linhas: cabeçalho, conteúdo e rodapé */
+    grid-template-rows: auto 1fr auto; 
+}
+
+/* Para centralizar o conteúdo e não deixar ele esticar demais em telas grandes */
+.container {
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 0 auto;    /* Centraliza o container na tela */
+    padding: 0 var(--espaco-g); /* Adiciona um respiro nas laterais */
+}
+
+/* ============================================= */
+/* ===== 4. COMPONENTES (HEADER E NAVEGAÇÃO) ===== */
+/* ============================================= */
+
+header {
+    background-color: var(--cor-neutra-clara);
+    border-bottom: 1px solid var(--cor-neutra-media);
+    padding: var(--espaco-m) 0;
+}
+
+
+header .container {
+    display: flex; /* Ativamos o flexbox */
+    justify-content: space-between; /* Espaça os itens nas extremidades */
+    align-items: center; /* Alinha verticalmente ao centro */
+}
+
+header h1 {
+    font-size: var(--tamanho-g);
+}
+
+/* ----- Menu de Navegação ----- */
+nav ul {
+    display: flex; /* Ativamos o flexbox para o menu */
+    list-style: none; /* Remove os marcadores padrão */
+}
+
+nav li {
+    margin-left: var(--espaco-g); /* Espaçamento entre os itens do menu */
+}
+
+nav a {
+    font-size: var(--tamanho-p);
+    font-weight: bold;
+    padding: var(--espaco-p);
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: var(--cor-fundo);
+    color: var(--cor-primaria);
+}
+
+/* ----- Cards ----- */
+.lista-projetos {
+    display: flex;          /* Ativamos o flexbox */
+    flex-wrap: wrap;   /* Permite que os cards quebrem linha */
+    gap: var(--espaco-g);  /* Espaçamento entre os cards */
+    margin-top: var(--espaco-xg);
+}
+
+.projeto-item {
+
+    flex-basis: calc(50% - var(--espaco-m)); 
+    background-color: var(--cor-neutra-clara);
+    border: 1px solid var(--cor-neutra-media);
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Sombra suave */
+    overflow: hidden; /* Garante que a imagem não "vaze" dos cantos arredondados */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.projeto-item:hover {
+    transform: translateY(-5px); /* Efeito de levantar o card */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1); /* Sombra mais forte */
+}
+
+/* Estilo para a imagem dentro do card */
+.projeto-item img {
+    width: 100%; /* Faz a imagem ocupar toda a largura do card */
+    display: block; /* Remove pequenos espaços indesejados abaixo da imagem */
+}
+
+.projeto-item h3,
+.projeto-item p {
+    padding: 0 var(--espaco-m) var(--espaco-m);
+}
+.projeto-item h3 {
+    padding-top: var(--espaco-m);
+}
+
+/* ----- Formulário de Cadastro ----- */
+.form-container {
+    background-color: var(--cor-neutra-clara);
+    padding: var(--espaco-xg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    margin-top: var(--espaco-xg);
+    margin-bottom: var(--espaco-xxg);
+}
+
+form {
+    display: flex; /* Usamos flexbox para organizar o formulário */
+    flex-direction: column; /* Organiza os itens em uma coluna */
+    gap: var(--espaco-m); /* Espaço entre os elementos do formulário */
+}
+
+fieldset {
+    border: 1px solid var(--cor-neutra-media);
+    border-radius: 4px;
+    padding: var(--espaco-m);
+}
+
+legend {
+    font-weight: bold;
+    color: var(--cor-primaria);
+    padding: 0 var(--espaco-p); /* Adiciona um respiro em volta do texto */
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: var(--espaco-p);
+    display: block; /* Garante que o label ocupe a linha inteira */
+}
+
+/* Estilo base para todos os campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"] {
+    width: 100%;
+    padding: var(--espaco-m);
+    border: 1px solid var(--cor-neutra-media);
+    border-radius: 4px;
+    font-size: var(--tamanho-p);
+}
+
+/* Feedback visual ao clicar no campo (requisito da atividade) */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 5px rgba(42, 125, 46, 0.5);
+}
+
+/* Botão de Envio com estados */
+button[type="submit"] {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    font-weight: bold;
+    font-size: var(--tamanho-m);
+    border: none;
+    padding: var(--espaco-m) var(--espaco-g);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Estado :hover (passar o mouse por cima) */
+button[type="submit"]:hover {
+    background-color: #ffb300; /* Um amarelo um pouco mais escuro */
+}
+
+/* Estado :active (enquanto está sendo clicado) */
+button[type="submit"]:active {
+    transform: scale(0.98); /* Leve redução de tamanho para efeito de clique */
+}
+
+/* ============================================= */
+/* ===== 5. RESPONSIVIDADE (MEDIA QUERIES) ===== */
+/* ============================================= */
+
+/* --- Breakpoint 1: Telas Grandes - 1200px --- */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px; /* Largura máxima para telas grandes */
+    }
+}
+
+
+/* --- Breakpoint 2: Telas Médias - até 1024px --- */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+
+/* --- Breakpoint 3: Telas de Tablets - até 768px --- */
+@media (max-width: 768px) {
+    :root {
+        --tamanho-xxg: 2.5rem;
+        --tamanho-xg: 1.75rem;
+        --tamanho-g: 1.25rem;
+    }
+
+    header .container {
+        flex-direction: column;
+        gap: var(--espaco-m);
+    }
+    
+    nav ul {
+        justify-content: center; /* Centraliza o menu */
+        flex-wrap: wrap; /* Permite que o menu quebre linha se necessário */
+    }
+
+    .projeto-item {
+        flex-basis: 100%;
+    }
+    
+    nav ul {
+        display: none !important; /* Esconde sempre em telas pequenas */
+    }
+    nav.menu-aberto ul {
+        display: flex !important; /* Só mostra quando o menu está aberto */
+    }
+}
+
+
+/* --- Breakpoint 4: Telas de Celulares Grandes - até 480px --- */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--espaco-m);
+    }
+
+    :root {
+        --tamanho-xxg: 2.0rem;
+        --tamanho-xg: 1.5rem;
+    }
+    
+    .page-title h2 {
+        font-size: var(--tamanho-xg);
+    }
+    
+    button[type="submit"] {
+        font-size: var(--tamanho-p);
+    }
+}
+
+
+/* --- Breakpoint 5: Telas de Celulares Pequenos - até 320px --- */
+@media (max-width: 320px) {
+    nav li {
+        margin-left: var(--espaco-p);
+    }
+}
+
+/* ================================================= */
+/* ===== 6. MENU HAMBÚRGUER ===== */
+/* ================================================= */
+
+.menu-hamburguer {
+    display: none; /* Escondido por padrão em telas grandes */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-hamburguer .barra {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--cor-primaria);
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- ESTILOS APLICADOS DENTRO DA MEDIA QUERY PARA TABLETS/CELULARES --- */
+@media (max-width: 768px) {
+    /* 1. Esconde a navegação de desktop */
+    nav ul {
+        display: none;
+    }
+    
+    /* 2. Mostra o botão hambúrguer */
+    .menu-hamburguer {
+        display: flex;
+    }
+
+    /* 3. Estiliza o menu quando ele estiver aberto */
+    nav.menu-aberto {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9); /* Fundo semi-transparente */
+        z-index: 1000; /* Garante que o menu fique por cima de tudo */
+    }
+
+    nav.menu-aberto ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    nav.menu-aberto li {
+        margin: var(--espaco-g) 0; /* Espaçamento maior entre os itens do menu */
+    }
+
+    nav.menu-aberto a {
+        color: var(--cor-neutra-clara);
+        font-size: var(--tamanho-g);
+    }
+}
+
+/* ================================================= */
+/* ===== 7. ESTILOS DE VALIDAÇÃO DE FORMULÁRIO ===== */
+/* ================================================= */
+
+/* Estilo para a mensagem de erro */
+.error-message {
+    color: var(--cor-erro);
+    font-size: 0.9rem; /* Tamanho um pouco menor */
+    display: block; /* Ocupa a própria linha */
+    margin-top: var(--espaco-p);
+}
+
+/* Estilo para o campo de input quando está inválido */
+input.invalid {
+    border-color: var(--cor-erro);
+    background-color: #fffafa; /* Um fundo rosado bem claro */
+}
+
+input.invalid:focus {
+    border-color: var(--cor-erro);
+    box-shadow: 0 0 5px rgba(244, 67, 54, 0.5);
+}
+
+/* Estilo para a mensagem de sucesso */
+.success-message {
+    background-color: #e8f5e9; /* Fundo verde bem claro */
+    color: var(--cor-sucesso);
+    border: 1px solid var(--cor-sucesso);
+    border-radius: 4px;
+    padding: var(--espaco-g);
+    text-align: center;
+    font-weight: bold;
+}

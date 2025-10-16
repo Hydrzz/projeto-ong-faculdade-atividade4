@@ -140,12 +140,13 @@ function router() {
     initEventListeners();
 }
 
-// =3. INICIALIZAÇÃO DE EVENTOS
+// 3. INICIALIZAÇÃO DE EVENTOS
 
 // Adiciona o event listener do menu hamburguer apenas uma vez, assim que o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
     const menuHamburguer = document.querySelector('.menu-hamburguer');
-    const nav = document.querySelector('nav');
+    const navs = document.querySelectorAll('nav');
+    const nav = navs[navs.length - 1]; // pega o último nav do header, que é o menu de verdade
     if (menuHamburguer && nav) {
         menuHamburguer.addEventListener('click', () => {
             nav.classList.toggle('menu-aberto');
@@ -160,6 +161,36 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initEventListeners() {
+    // Lógica do Modo Escuro
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const html = document.documentElement; // Seleciona a tag <html>
+            const isDark = html.getAttribute('data-theme') === 'dark';
+
+            if (isDark) {
+                html.removeAttribute('data-theme');
+                localStorage.removeItem('theme');
+                themeToggle.innerHTML = '🌙';
+                themeToggle.setAttribute('aria-label', 'Alternar para modo escuro');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '☀️';
+                themeToggle.setAttribute('aria-label', 'Alternar para modo claro');
+            }
+        });
+    }
+
+    // Lógica para carregar o tema salvo
+    if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        const themeToggle = document.getElementById('theme-toggle');
+        if(themeToggle) {
+            themeToggle.innerHTML = '☀️';
+            themeToggle.setAttribute('aria-label', 'Alternar para modo claro');
+        }
+    }
     // Só cuida dos eventos dinâmicos das páginas (ex: formulário)
     const cadastroForm = document.getElementById('cadastro-form');
     if (cadastroForm) {

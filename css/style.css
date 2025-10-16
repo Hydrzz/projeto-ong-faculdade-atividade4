@@ -30,6 +30,27 @@
     --espaco-max: 64px;
 }
 
+/* Estilos para o botão de toggle */
+#theme-toggle {
+    background: transparent;
+    border: 1px solid var(--cor-neutra-media);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: var(--espaco-m);
+}
+
+/* Define as novas cores quando o html tiver o atributo data-theme="dark" */
+[data-theme="dark"] {
+    --cor-fundo: #121212;
+    --cor-texto: #E0E0E0;
+    --cor-primaria: #5cb85c; /* Um verde mais vibrante para contraste */
+    --cor-neutra-clara: #1E1E1E; /* Cor dos cards e header */
+    --cor-neutra-media: #333333; /* Cor das bordas */
+}
+
 /* ============================================= */
 /* ===== 2. RESET E ESTILOS GLOBAIS        ===== */
 /* ============================================= */
@@ -283,10 +304,15 @@ button[type="submit"]:active {
     }
     
     nav ul {
-        display: none !important; /* Esconde sempre em telas pequenas */
+        display: none; /* Remova o !important aqui */
     }
     nav.menu-aberto ul {
-        display: flex !important; /* Só mostra quando o menu está aberto */
+        display: flex !important; /* Mantenha o !important aqui para garantir */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -416,4 +442,22 @@ input.invalid:focus {
     padding: var(--espaco-g);
     text-align: center;
     font-weight: bold;
+}
+
+/* Ajustes para o menu hamburguer e menu aberto no modo dark */
+[data-theme="dark"] .menu-hamburguer .barra {
+    background-color: var(--cor-secundaria); /* Amarelo para contraste */
+}
+
+[data-theme="dark"] nav.menu-aberto {
+    background-color: rgba(30, 30, 30, 0.98); /* Fundo escuro quase opaco */
+}
+
+[data-theme="dark"] nav.menu-aberto a {
+    color: var(--cor-secundaria); /* Amarelo para links */
+}
+
+[data-theme="dark"] nav.menu-aberto a:hover {
+    background-color: var(--cor-primaria);
+    color: var(--cor-neutra-clara);
 }

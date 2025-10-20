@@ -37,10 +37,7 @@ O projeto foi construído como uma **Single Page Application (SPA)**, garantindo
 
 Este é um projeto front-end puro e não requer um passo de compilação ou instalação de dependências.
 
-1.  Clone este repositório para a sua máquina local:
-    ```bash
-    git clone [https://github.com/seu-nome-de-usuario/projeto-ong-faculdade.git](https://github.com/seu-nome-de-usuario/projeto-ong-faculdade.git)
-    ```
+1.  Clone este repositório para a sua máquina local.
 2.  Navegue até a pasta do projeto.
 3.  Abra o arquivo `index.html` em seu navegador de preferência.
 

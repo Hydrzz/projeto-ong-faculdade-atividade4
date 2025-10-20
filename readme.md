@@ -47,8 +47,8 @@ Este é um projeto front-end puro e não requer um passo de compilação ou inst
 
 O repositório está organizado da seguinte forma para facilitar a manutenção e escalabilidade:\
 ├── index.html > **O arquivo HTML principal que serve como "shell" da SPA**\
-├── README.md **Esta documentação**\
-├── assets/ **Contém todos os recursos de imagem**\
-├── css/ **Contém os arquivos de estilo (original e minificado)**\
-└── js/ **Contém os arquivos de script (original e minificado)**
+├── README.md > **Esta documentação**\
+├── assets/ > **Contém todos os recursos de imagem**\
+├── css/ > **Contém os arquivos de estilo (original e minificado)**\
+└── js/ > **Contém os arquivos de script (original e minificado)**
 

@@ -119,7 +119,7 @@ function renderCadastroPage() {
 const app = document.getElementById('app');
 
 function router() {
-    // Pega o hash atual da URL (ou usa '#inicio' como padrão)
+    // Pega o hash atual da URL
     const hash = window.location.hash || '#inicio';
 
     switch (hash) {
@@ -146,7 +146,7 @@ function router() {
 document.addEventListener('DOMContentLoaded', () => {
     const menuHamburguer = document.querySelector('.menu-hamburguer');
     const navs = document.querySelectorAll('nav');
-    const nav = navs[navs.length - 1]; // pega o último nav do header, que é o menu de verdade
+    const nav = navs[navs.length - 1];
     if (menuHamburguer && nav) {
         menuHamburguer.addEventListener('click', () => {
             nav.classList.toggle('menu-aberto');
@@ -191,7 +191,7 @@ function initEventListeners() {
             themeToggle.setAttribute('aria-label', 'Alternar para modo claro');
         }
     }
-    // Só cuida dos eventos dinâmicos das páginas (ex: formulário)
+    // Só cuida dos eventos dinâmicos das páginas
     const cadastroForm = document.getElementById('cadastro-form');
     if (cadastroForm) {
         cadastroForm.addEventListener('submit', function(event) {
@@ -332,4 +332,5 @@ function isValidBirthdate(dateString) {
 window.addEventListener('DOMContentLoaded', router);
 
 // Roda o roteador quando o hash na URL mudar
+
 window.addEventListener('hashchange', router);
